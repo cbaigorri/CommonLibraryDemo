@@ -18,11 +18,13 @@ $ ->
 
   # Play
   $('.play').bind 'click', (e)->
+    e.preventDefault()
     s.play()
     return
 
   # Pause
   $('.pause').bind 'click', (e)->
+    e.preventDefault()
     s.pause()
     return
 
@@ -30,7 +32,7 @@ $ ->
   s.addListener 'timeupdate', (e, c, d)->
     $('.elapsed').text(c)
     $('.duration').text(d)
-    $('.seek').attr('value', e.currentTarget.currentTime / e.currentTarget.duration)
+    $('.seek').val e.currentTarget.currentTime / e.currentTarget.duration
     return
 
   # Scrubber Change Handler
@@ -43,6 +45,7 @@ $ ->
   s.addListener 'volumechange', (e)->
     $('.volume').val e.currentTarget.volume
     $('.volume-label').text e.currentTarget.volume
+    return
 
   # Volume Change Handler
   $('.volume').bind 'change', (e)->
@@ -51,16 +54,19 @@ $ ->
 
   # Fade In Volume
   $('.fadeIn').bind 'click', (e)->
+    e.preventDefault()
     s.fadeIn()
     return
 
   # Fade Out Volume with duration and steps
   $('.fadeOut').bind 'click', (e)->
+    e.preventDefault()
     s.fadeOut(10000, 50)
     return
 
   # Mute
   $('.mute').bind 'click', (e)->
+    e.preventDefault()
     s.mute()
     return
 

@@ -137,7 +137,7 @@ module.exports = (grunt) ->
       build:
         expand: true
         cwd: 'src/'
-        src: ['**/*.{html,png,jpg,gif,mp3,ogg}']
+        src: ['**/*.{html,png,jpg,gif,mp3,ogg,webm,mp4}']
         dest: 'build/'
       release:
         expand: true

@@ -15,6 +15,8 @@ s = new VideoController
   poster: 'http://localhost:9001/offline-media/video/poster.jpg'
   autoplay: false
   preload: true
+  width: '100%'
+  height: '100%'
 
 $ ->
   $('.load').bind 'click', (e)->
@@ -76,6 +78,27 @@ $ ->
   $('.mute').bind 'click', (e)->
     e.preventDefault()
     s.mute()
+    return
+
+  # Fullscreen
+  $('.fullscreen').bind 'click', (e)->
+    e.preventDefault()
+    s.fullscreen()
+    return
+
+  # Fullscreen change
+  s.addListener 'fullscreenchange', (e)->
+    console.log 'fullscreen change', e
+    return
+
+  # Begin Fullscreen
+  s.addListener 'beginfullscreen', (e)->
+    console.log 'begin fullscreen', e
+    return
+
+  # End Fullscreen
+  s.addListener 'endfullscreen', (e)->
+    console.log 'end fullscreen', e
     return
 
   # Do something when the video is finished playing
